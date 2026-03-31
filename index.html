@@ -6,310 +6,406 @@
   <title>Writerly – Your voice, scaled.</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800;900&display=swap" rel="stylesheet">
   <style>
-    /* ============================================================
-       CSS CUSTOM PROPERTIES
-    ============================================================ */
     :root {
-      /* Brand colors */
-      --clr-violet:        #8944BA;
-      --clr-teal:          #15A198;
-      --clr-mint:          #73E280;
-      --clr-fuchsia:       #D9699B;
-
-      /* Background scale */
-      --clr-bg-darkest:    #0D0A1E;
-      --clr-bg-dark:       #1A1333;
-      --clr-bg-card:       #1C1640;
-      --clr-bg-deep:       #2E2558;
-
-      /* Text */
-      --clr-text:          #FFFFFF;
-      --clr-text-muted:    rgba(255, 255, 255, 0.65);
-      --clr-text-subtle:   rgba(255, 255, 255, 0.35);
-
-      /* Typography */
-      --font:              'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
-
-      /* Layout */
-      --max-w:             1160px;
-      --px:                clamp(1rem, 4vw, 2.5rem);
-
-      /* Radii */
-      --r-sm:   8px;
-      --r-md:   14px;
-      --r-lg:   22px;
-      --r-xl:   36px;
+      --clr-violet: #8944BA;
+      --clr-teal: #15A198;
+      --clr-mint: #73E280;
+      --clr-fuchsia: #D9699B;
+      --clr-bg-darkest: #0D0A1E;
+      --clr-bg-dark: #1A1333;
+      --clr-bg-card: #1C1640;
+      --clr-bg-deep: #2E2558;
+      --clr-text: #FFFFFF;
+      --clr-text-muted: rgba(255, 255, 255, 0.65);
+      --clr-text-subtle: rgba(255, 255, 255, 0.35);
+      --font: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+      --max-w: 1160px;
+      --px: clamp(1rem, 4vw, 2.5rem);
+      --r-sm: 8px;
+      --r-md: 14px;
+      --r-lg: 22px;
+      --r-xl: 36px;
       --r-pill: 999px;
     }
 
-    /* ============================================================
-       RESET
-    ============================================================ */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html  { scroll-behavior: smooth; }
-    body  { font-family: var(--font); font-weight: 400; background: var(--clr-bg-darkest); color: var(--clr-text); line-height: 1.6; overflow-x: hidden; }
-    img   { max-width: 100%; height: auto; display: block; }
-    a     { color: inherit; text-decoration: none; }
-    ul    { list-style: none; }
-    button { font-family: var(--font); cursor: pointer; }
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font);
+      font-weight: 400;
+      background: var(--clr-bg-darkest);
+      color: var(--clr-text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    button {
+      font-family: var(--font);
+      cursor: pointer;
+    }
 
     h1, h2, h3, h4, h5, h6 {
       font-family: var(--font);
       font-weight: 900;
+      line-height: 1.1;
       text-transform: uppercase;
-      letter-spacing: 0.01em;
-    }
-    p, li, span, a, input, button, label {
-      font-weight: 400;
+      letter-spacing: -0.01em;
     }
 
-    /* ============================================================
-       LAYOUT UTILITIES
-    ============================================================ */
     .container {
       max-width: var(--max-w);
       margin-inline: auto;
       padding-inline: var(--px);
     }
 
-    /* ============================================================
-       SCROLL ANIMATIONS
-    ============================================================ */
+    /* Reveal animations */
     .reveal {
       opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.65s ease, transform 0.65s ease;
+      transform: translateY(32px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
     }
-    .reveal.visible { opacity: 1; transform: none; }
-    .delay-1 { transition-delay: 0.10s; }
-    .delay-2 { transition-delay: 0.20s; }
-    .delay-3 { transition-delay: 0.30s; }
-    .delay-4 { transition-delay: 0.40s; }
-    .delay-5 { transition-delay: 0.50s; }
-    .delay-6 { transition-delay: 0.60s; }
 
-    /* ============================================================
-       BUTTONS
-    ============================================================ */
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .delay-2 {
+      transition-delay: 0.18s;
+    }
+
+    .delay-3 {
+      transition-delay: 0.32s;
+    }
+
+    /* Section dividers */
+    .section-divider {
+      border: none;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(137, 68, 186, 0.25), rgba(217, 105, 155, 0.2), transparent);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .delay-4 {
+      transition-delay: 0.46s;
+    }
+
+    .delay-5 {
+      transition-delay: 0.58s;
+    }
+
+    .delay-6 {
+      transition-delay: 0.68s;
+    }
+
+    /* NAV */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(13, 10, 30, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .nav__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .nav__logo img {
+      height: 36px;
+      width: auto;
+    }
+
+    .nav__links {
+      display: flex;
+      gap: 2rem;
+      font-size: 0.82rem;
+      font-weight: 500;
+    }
+
+    .nav__links a {
+      transition: color 0.2s;
+    }
+
+    .nav__links a:hover {
+      color: var(--clr-fuchsia);
+    }
+
+    /* Hamburger menu */
+    .nav__burger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+      z-index: 110;
+    }
+
+    .nav__burger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: #fff;
+      margin: 5px 0;
+      border-radius: 2px;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .nav__burger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .nav__burger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .nav__burger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    .nav__mobile-menu {
+      display: none;
+      position: fixed;
+      top: 64px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(13, 10, 30, 0.97);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 99;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    .nav__mobile-menu.open {
+      display: flex;
+    }
+
+    .nav__mobile-menu a {
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--clr-text-muted);
+      transition: color 0.2s;
+    }
+
+    .nav__mobile-menu a:hover {
+      color: var(--clr-fuchsia);
+    }
+
+    .nav__mobile-menu .btn--ghost-fuchsia {
+      color: var(--clr-fuchsia);
+      border: 1.5px solid var(--clr-fuchsia);
+      padding: 0.65rem 1.5rem;
+      border-radius: var(--r-pill);
+      margin-top: 0.5rem;
+    }
+
+    /* Buttons */
     .btn {
       display: inline-flex;
       align-items: center;
       gap: 0.45rem;
-      padding: 0.65rem 1.5rem;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
       border-radius: var(--r-pill);
-      font-size: 0.875rem;
-      font-weight: 600;
-      line-height: 1;
-      border: 2px solid transparent;
-      transition: background 0.25s, color 0.25s, box-shadow 0.25s, transform 0.2s;
+      padding: 0.65rem 1.5rem;
+      transition: background 0.25s, box-shadow 0.25s, color 0.25s;
       white-space: nowrap;
     }
-    .btn:hover { transform: translateY(-2px); }
 
     .btn--ghost-fuchsia {
-      border-color: var(--clr-fuchsia);
+      border: 1.5px solid var(--clr-fuchsia);
       color: var(--clr-fuchsia);
       background: transparent;
     }
+
     .btn--ghost-fuchsia:hover {
       background: var(--clr-fuchsia);
       color: #fff;
-      box-shadow: 0 6px 20px rgba(217, 105, 155, 0.4);
+      box-shadow: 0 6px 20px rgba(217, 105, 155, 0.35);
     }
 
     .btn--fuchsia {
       background: var(--clr-fuchsia);
       color: #fff;
-      border-color: var(--clr-fuchsia);
+      border: none;
     }
+
     .btn--fuchsia:hover {
       background: #c45388;
-      border-color: #c45388;
-      box-shadow: 0 6px 24px rgba(217, 105, 155, 0.45);
+      box-shadow: 0 6px 20px rgba(217, 105, 155, 0.35);
     }
 
-    .btn--deep {
-      background: var(--clr-bg-deep);
-      color: #fff;
-      border-color: var(--clr-bg-deep);
-      border-radius: var(--r-sm);
-    }
-    .btn--deep:hover {
-      background: var(--clr-fuchsia);
-      border-color: var(--clr-fuchsia);
-    }
-
-    /* ============================================================
-       NAVIGATION
-    ============================================================ */
-    .nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(13, 10, 30, 0.92);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(137, 68, 186, 0.18);
-    }
-    .nav__inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 76px;
-      gap: 2rem;
-    }
-    .nav__logo img { height: 56px; width: auto; }
-    .nav__links {
-      display: flex;
-      gap: 2.25rem;
-    }
-    .nav__links a {
-      font-size: 0.875rem;
-      font-weight: 500;
-      color: var(--clr-text-muted);
-      transition: color 0.2s;
-    }
-    .nav__links a:hover { color: var(--clr-text); }
-
-    /* ============================================================
-       HERO
-    ============================================================ */
+    /* HERO */
     .hero {
-      position: relative;
-      background: var(--clr-bg-darkest);
-      padding-block: clamp(3.5rem, 8vw, 6rem) clamp(2.5rem, 5vw, 4rem);
-      overflow: hidden;
+      padding-block: clamp(3rem, 6vw, 5rem) clamp(2rem, 4vw, 3rem);
+      background: radial-gradient(ellipse 70% 60% at 65% 55%, rgba(137, 68, 186, 0.2) 0%, transparent 70%);
     }
-    /* Ambient glow behind statue */
-    .hero::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 55% 70% at 70% 45%, rgba(137, 68, 186, 0.28) 0%, transparent 65%),
-        radial-gradient(ellipse 35% 50% at 75% 60%, rgba(21, 161, 152, 0.15) 0%, transparent 60%);
-      pointer-events: none;
-    }
+
     .hero__inner {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      align-items: center;
       gap: 2rem;
-      position: relative;
-      z-index: 1;
+      align-items: center;
     }
-    .hero__content {}
 
     .hero__title {
-      font-size: clamp(3rem, 6.5vw, 5.25rem);
-      font-weight: 900;
-      line-height: 0.95;
-      text-transform: uppercase;
-      letter-spacing: -0.02em;
-      margin-bottom: 1.5rem;
+      font-size: clamp(2.5rem, 6vw, 5.25rem);
+      line-height: 1;
+      margin-bottom: 1.25rem;
     }
+
     .hero__title em {
       font-style: normal;
-      color: var(--clr-violet);
-      display: block;
+      background: linear-gradient(135deg, var(--clr-fuchsia), var(--clr-violet));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
     .hero__sub {
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       color: var(--clr-text-muted);
-      max-width: 400px;
-      line-height: 1.7;
-      margin-bottom: 1.75rem;
+      margin-bottom: 1.5rem;
+      max-width: 520px;
     }
 
     .hero__stats {
       display: flex;
-      gap: 2.5rem;
+      gap: 2rem;
       margin-top: 2rem;
-      margin-bottom: 1.75rem;
     }
-    .stat {
-      display: flex;
-      flex-direction: column;
-      gap: 0.2rem;
-    }
+
     .stat__top {
       display: flex;
       align-items: center;
-      gap: 0.35rem;
+      gap: 0.4rem;
     }
-    .stat__icon { width: 32px; height: 32px; object-fit: contain; }
-    .stat__num  {
-      font-size: 2.25rem;
+
+    .stat__icon {
+      width: 28px;
+      height: 28px;
+    }
+
+    .stat__num {
+      font-size: 2.6rem;
       font-weight: 900;
       line-height: 1;
     }
-    .stat__pct  { font-size: 1rem; font-weight: 700; }
+
+    .stat__pct {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--clr-text-muted);
+    }
+
     .stat__label {
       font-size: 0.72rem;
-      color: var(--clr-text-muted);
-      letter-spacing: 0.01em;
+      font-weight: 500;
+      color: var(--clr-text-subtle);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-top: 0.2rem;
     }
 
     .hero__tagline {
-      font-size: 0.9rem;
-      font-weight: 700;
+      margin-top: 2rem;
+      font-size: 0.72rem;
+      font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 0.025em;
-      color: var(--clr-text);
+      letter-spacing: 0.08em;
+      line-height: 1.5;
+      white-space: nowrap;
     }
-    .hero__tagline span { color: var(--clr-fuchsia); font-weight: 800; }
+
+    .hero__tagline span {
+      color: var(--clr-fuchsia);
+    }
 
     .hero__image {
-      position: relative;
       display: flex;
       justify-content: center;
-      align-items: flex-end;
     }
+
     .hero__image img {
-      position: relative;
-      z-index: 1;
-      max-height: 530px;
-      width: auto;
+      max-width: 420px;
+      border-radius: var(--r-lg);
       filter: drop-shadow(0 0 40px rgba(137, 68, 186, 0.55));
     }
 
-    /* ============================================================
-       BUSINESS CARD
-    ============================================================ */
-    .section-business { padding-block: 3.5rem; }
+    /* BUSINESS SECTION */
+    .section-business {
+      padding-block: clamp(2rem, 4vw, 3rem);
+    }
+
     .business-card {
       background: var(--clr-bg-card);
       border-radius: var(--r-lg);
-      padding: clamp(2rem, 4vw, 3rem) clamp(2rem, 5vw, 3.5rem);
-      max-width: 860px;
+      padding: clamp(2.5rem, 5vw, 4rem);
+      text-align: center;
+      max-width: 780px;
       margin-inline: auto;
     }
+
     .business-card h2 {
-      font-size: clamp(1.4rem, 3vw, 2.1rem);
-      font-weight: 900;
-      text-transform: uppercase;
-      line-height: 1.1;
-      margin-bottom: 1rem;
+      font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+      margin-bottom: 1.25rem;
     }
+
     .business-card p {
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       color: var(--clr-text-muted);
       line-height: 1.75;
     }
 
-    /* ============================================================
-       THE REALITY
-    ============================================================ */
+    /* REALITY SECTION */
     .section-reality {
       padding-block: clamp(3.5rem, 7vw, 5.5rem);
     }
+
     .section-heading {
       text-align: center;
       margin-bottom: 3rem;
     }
+
     .section-heading h2 {
       font-size: clamp(1.75rem, 4vw, 3rem);
       font-weight: 900;
@@ -317,6 +413,7 @@
       letter-spacing: -0.01em;
       margin-bottom: 0.6rem;
     }
+
     .section-heading p {
       font-size: 0.9rem;
       color: var(--clr-text-muted);
@@ -330,12 +427,14 @@
       grid-template-columns: 1fr 1fr;
       align-items: center;
     }
+
     .reality-list {
       padding: clamp(2.5rem, 5vw, 3.5rem);
       display: flex;
       flex-direction: column;
       gap: 0;
     }
+
     .reality-item {
       display: grid;
       grid-template-columns: 52px 1fr;
@@ -343,260 +442,444 @@
       align-items: start;
       position: relative;
     }
-    /* vertical connecting line */
+
     .reality-item:not(:last-child)::before {
       content: '';
       position: absolute;
-      left: 25px;
+      left: 20px;
       top: 42px;
-      bottom: -16px;
+      bottom: -2rem;
       width: 1px;
       background: rgba(255, 255, 255, 0.1);
     }
+
     .reality-item + .reality-item {
       margin-top: 2rem;
     }
+
     .reality-num-badge {
       width: 42px;
       height: 42px;
-      border-radius: var(--r-sm);
-      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: var(--clr-text-muted);
-      letter-spacing: 0.04em;
-      flex-shrink: 0;
-      position: relative;
+      font-size: 0.7rem;
+      font-weight: 800;
+      border: 1.5px solid rgba(255, 255, 255, 0.15);
+      color: var(--clr-text-subtle);
+      background: transparent;
+      transition: all 0.3s ease;
     }
-    /* active item, fuchsia left border */
+
     .reality-item--active .reality-num-badge {
       border-color: var(--clr-fuchsia);
       color: var(--clr-fuchsia);
+      background: rgba(217, 105, 155, 0.08);
     }
-    .reality-item--active .reality-num-badge::before {
-      content: '';
-      position: absolute;
-      left: -1px;
-      top: 4px;
-      bottom: 4px;
-      width: 3px;
-      background: var(--clr-fuchsia);
-      border-radius: 2px;
-    }
-    .reality-item-body {
-      padding-top: 0.65rem;
-    }
+
     .reality-text {
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       color: var(--clr-text-muted);
-      line-height: 1.7;
+      line-height: 1.6;
+      transition: color 0.4s ease;
     }
+
+    .reality-item--active .reality-text {
+      color: #fff;
+    }
+
     .reality-img {
-      height: 100%;
-      min-height: 400px;
+      display: flex;
+      justify-content: center;
+      padding: 2rem;
     }
+
     .reality-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center top;
+      max-width: 350px;
+      border-radius: var(--r-md);
       filter: drop-shadow(-16px 0 32px rgba(137, 68, 186, 0.4));
     }
 
-    /* ============================================================
-       FEATURES SPLIT
-    ============================================================ */
-    .section-split { padding-block: clamp(3rem, 6vw, 5rem); }
+    /* COMPARE SECTION */
+    .section-compare {
+      padding-block: clamp(3.5rem, 7vw, 5.5rem);
+    }
+
+    .compare-intro {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .compare-intro h2 {
+      font-size: clamp(1.75rem, 4vw, 3rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+    }
+
+    .compare-intro p {
+      font-size: 0.9rem;
+      color: var(--clr-text-muted);
+      max-width: 620px;
+      margin-inline: auto;
+    }
+
+    .compare-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+      margin-bottom: 2.5rem;
+      align-items: stretch;
+    }
+
+    .compare-card {
+      background: var(--clr-bg-card);
+      border-radius: var(--r-md);
+      padding: 1.5rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .compare-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--clr-violet);
+      margin-bottom: 0.4rem;
+    }
+
+    .compare-card--writerly {
+      background: linear-gradient(160deg, var(--clr-bg-deep), rgba(137, 68, 186, 0.18));
+      border: 1.5px solid var(--clr-fuchsia);
+    }
+
+    .compare-option {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--clr-text-subtle);
+      margin-bottom: 0.5rem;
+    }
+
+    .compare-card--writerly .compare-option {
+      color: var(--clr-fuchsia);
+    }
+
+    .compare-cost {
+      font-size: 1.75rem;
+      font-weight: 900;
+      line-height: 1;
+      margin-bottom: 0.2rem;
+    }
+
+    .compare-cost span {
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: var(--clr-text-muted);
+    }
+
+    .compare-cost-note {
+      font-size: 0.7rem;
+      color: var(--clr-text-subtle);
+      margin-bottom: 1rem;
+    }
+
+    .compare-pros {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      text-align: left;
+      margin-top: auto;
+    }
+
+    .compare-pros li {
+      font-size: 0.78rem;
+      color: var(--clr-text-muted);
+      padding-left: 1.1rem;
+      position: relative;
+      line-height: 1.5;
+    }
+
+    .compare-pros li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--clr-teal);
+      font-size: 0.7rem;
+    }
+
+    .compare-cons {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      text-align: left;
+      margin-top: 0.75rem;
+    }
+
+    .compare-cons li {
+      font-size: 0.78rem;
+      color: var(--clr-text-subtle);
+      padding-left: 1.1rem;
+      position: relative;
+      line-height: 1.5;
+    }
+
+    .compare-cons li::before {
+      content: '✗';
+      position: absolute;
+      left: 0;
+      color: rgba(255, 255, 255, 0.2);
+      font-size: 0.7rem;
+    }
+
+    .compare-card--writerly .compare-pros li {
+      color: #fff;
+    }
+
+    .compare-card--writerly .compare-pros li::before {
+      color: var(--clr-fuchsia);
+    }
+
+    .compare-statement {
+      background: linear-gradient(135deg, rgba(137, 68, 186, 0.18), rgba(21, 161, 152, 0.12));
+      border: 1px solid rgba(137, 68, 186, 0.35);
+      border-radius: var(--r-lg);
+      padding: 2rem 2.5rem;
+      text-align: center;
+      max-width: 780px;
+      margin-inline: auto;
+    }
+
+    .compare-statement p {
+      font-size: 1rem;
+      line-height: 1.75;
+      color: var(--clr-text-muted);
+    }
+
+    .compare-statement strong {
+      color: #fff;
+    }
+
+    .highlight {
+      color: var(--clr-fuchsia);
+      font-weight: 700;
+    }
+
+    /* SPLIT SECTION */
+    .section-split {
+      padding-block: clamp(3.5rem, 7vw, 5.5rem);
+    }
+
     .split-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 1.5rem;
     }
+
     .split-card {
       background: var(--clr-bg-card);
       border-radius: var(--r-lg);
-      padding: clamp(2rem, 4vw, 2.75rem);
+      padding: clamp(2.5rem, 5vw, 3.5rem);
     }
+
     .split-card h2 {
-      font-size: clamp(1.3rem, 2.4vw, 1.875rem);
-      font-weight: 900;
-      text-transform: uppercase;
-      line-height: 1.15;
-      margin-bottom: 1.1rem;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      margin-bottom: 1rem;
     }
+
     .split-card p {
-      font-size: 0.875rem;
+      font-size: 0.88rem;
       color: var(--clr-text-muted);
       line-height: 1.75;
     }
-    .split-card p a { color: var(--clr-teal); text-decoration: underline; }
-    .split-card p strong { color: var(--clr-text); }
 
-    /* ============================================================
-       WRITERLY MAGIC
-    ============================================================ */
-    .section-magic { padding-block: clamp(3.5rem, 7vw, 5.5rem); }
+    .split-card a {
+      color: var(--clr-fuchsia);
+      font-weight: 600;
+    }
+
+    /* MAGIC SECTION */
+    .section-magic {
+      padding-block: clamp(3.5rem, 7vw, 5.5rem);
+    }
 
     .magic-heading {
       text-align: center;
       margin-bottom: 4rem;
     }
+
     .magic-heading h2 {
       font-size: clamp(1.75rem, 3.5vw, 2.6rem);
-      font-weight: 900;
-      text-transform: uppercase;
-      color: var(--clr-fuchsia);
-      margin-bottom: 1rem;
+      margin-bottom: 0.8rem;
     }
+
     .magic-heading p {
       font-size: 0.9rem;
       color: var(--clr-text-muted);
-      max-width: 520px;
+      max-width: 640px;
       margin-inline: auto;
-      line-height: 1.75;
     }
 
     .magic-feature {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: clamp(2rem, 5vw, 4rem);
+      gap: 3rem;
       align-items: center;
-      margin-bottom: clamp(3.5rem, 6vw, 5rem);
+      margin-bottom: 5rem;
     }
-    .magic-feature:last-child { margin-bottom: 0; }
-    .magic-feature--reverse .magic-img  { order: -1; }
 
-    .magic-img img {
-      width: 100%;
-      border-radius: var(--r-lg);
-      background: var(--clr-bg-card);
-      padding: 1rem;
-      filter: drop-shadow(0 0 28px rgba(137, 68, 186, 0.40));
+    .magic-feature:nth-child(odd) .magic-img {
+      order: -1;
     }
 
     .magic-label {
       display: inline-block;
-      font-size: 0.72rem;
-      color: var(--clr-text-muted);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: 4px;
-      padding: 0.3rem 0.75rem;
-      margin-bottom: 1rem;
-      letter-spacing: 0.02em;
-    }
-    .magic-content h3 {
-      font-size: clamp(1.4rem, 2.5vw, 2rem);
-      font-weight: 900;
+      font-size: 0.68rem;
+      font-weight: 700;
       text-transform: uppercase;
-      line-height: 1.12;
-      margin-bottom: 1rem;
+      letter-spacing: 0.1em;
+      color: var(--clr-fuchsia);
+      margin-bottom: 0.6rem;
+      background: rgba(217, 105, 155, 0.08);
+      border: 1px solid rgba(217, 105, 155, 0.2);
+      border-radius: var(--r-pill);
+      padding: 0.35rem 0.9rem;
     }
+
+    .magic-content h3 {
+      font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+    }
+
     .magic-content p {
-      font-size: 0.875rem;
+      font-size: 0.88rem;
       color: var(--clr-text-muted);
       line-height: 1.75;
       margin-bottom: 1.5rem;
     }
 
-    /* ============================================================
-       FEATURES GRID  (What you get)
-    ============================================================ */
+    .magic-img {
+      display: flex;
+      justify-content: center;
+    }
+
+    .magic-img img {
+      max-width: 380px;
+      border-radius: var(--r-lg);
+      filter: drop-shadow(0 0 28px rgba(137, 68, 186, 0.4));
+    }
+
+    /* GRID SECTION */
     .section-grid {
-      background: var(--clr-bg-dark);
       padding-block: clamp(3.5rem, 7vw, 5.5rem);
     }
-    .grid-heading { text-align: center; margin-bottom: 3.5rem; }
+
+    .grid-heading {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
     .grid-heading h2 {
-      font-size: clamp(1.5rem, 3vw, 2.3rem);
+      font-size: clamp(1.75rem, 4vw, 3rem);
       font-weight: 900;
       text-transform: uppercase;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.6rem;
     }
-    .grid-heading p { font-size: 0.875rem; color: var(--clr-text-muted); }
+
+    .grid-heading p {
+      font-size: 0.9rem;
+      color: var(--clr-text-muted);
+    }
 
     .features-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 2.5rem 2rem;
+      gap: 1.5rem;
     }
-    .feature-item {}
+
+    .feature-item {
+      background: var(--clr-bg-card);
+      border-radius: var(--r-md);
+      padding: 2rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .feature-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(137, 68, 186, 0.15);
+    }
+
     .feature-item__icon {
-      width: 48px;
-      height: 48px;
-      object-fit: contain;
+      width: 36px;
+      height: 36px;
       margin-bottom: 1rem;
     }
+
     .feature-item h3 {
-      font-size: 0.8rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
+      font-size: 0.95rem;
       margin-bottom: 0.6rem;
+      text-transform: uppercase;
     }
+
     .feature-item p {
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       color: var(--clr-text-muted);
-      line-height: 1.7;
+      line-height: 1.65;
     }
 
-    /* ============================================================
-       PRICING
-    ============================================================ */
-    .section-pricing { padding-block: clamp(3.5rem, 7vw, 5.5rem); }
+    /* PRICING SECTION */
+    .section-pricing {
+      padding-block: clamp(3.5rem, 7vw, 5.5rem);
+      background: var(--clr-bg-dark);
+    }
 
-    /* "Full marketing team" value banner */
     .pricing-value-banner {
-      background: linear-gradient(135deg, rgba(137,68,186,0.18) 0%, rgba(21,161,152,0.12) 100%);
-      border: 1px solid rgba(137,68,186,0.35);
+      background: linear-gradient(135deg, rgba(137, 68, 186, 0.18), rgba(21, 161, 152, 0.12));
+      border: 1px solid rgba(137, 68, 186, 0.35);
       border-radius: var(--r-lg);
-      padding: 1.75rem 2.5rem;
+      padding: 2rem 2.5rem;
       text-align: center;
-      margin-bottom: 3rem;
-      max-width: 860px;
+      max-width: 780px;
       margin-inline: auto;
+      margin-bottom: 3rem;
     }
+
     .pricing-value-banner p {
-      font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+      font-size: 0.9rem;
+      line-height: 1.75;
       color: var(--clr-text-muted);
-      line-height: 1.7;
     }
+
     .pricing-value-banner strong {
       color: #fff;
-      font-weight: 700;
-    }
-    .pricing-value-banner .highlight {
-      color: var(--clr-fuchsia);
-      font-weight: 700;
     }
 
     .pricing-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 1.25rem;
-      margin-top: 0;
-      align-items: start;
+      gap: 1.5rem;
+      align-items: stretch;
     }
+
     .pricing-card {
       background: var(--clr-bg-card);
       border-radius: var(--r-lg);
-      padding: 2rem 1.75rem 2.25rem;
-      border: 1px solid transparent;
+      padding: 2rem;
       position: relative;
-      display: flex;
-      flex-direction: column;
-      transition: border-color 0.25s;
     }
-    .pricing-card:hover { border-color: rgba(137,68,186,0.4); }
+
     .pricing-card--featured {
-      border-color: var(--clr-fuchsia);
-      background: linear-gradient(160deg, #221848 0%, #1C1640 100%);
+      border: 1.5px solid var(--clr-fuchsia);
     }
+
     .pricing-badge {
       position: absolute;
-      top: -13px;
+      top: -12px;
       left: 50%;
       transform: translateX(-50%);
       background: var(--clr-fuchsia);
@@ -609,6 +892,7 @@
       border-radius: var(--r-pill);
       white-space: nowrap;
     }
+
     .pricing-tier {
       font-size: 0.7rem;
       font-weight: 700;
@@ -617,7 +901,7 @@
       color: var(--clr-fuchsia);
       margin-bottom: 0.4rem;
     }
-    .pricing-card--featured .pricing-tier { color: var(--clr-fuchsia); }
+
     .pricing-name {
       font-size: 1rem;
       font-weight: 900;
@@ -627,29 +911,35 @@
       margin-bottom: 0.35rem;
       line-height: 1.2;
     }
+
     .pricing-tagline {
       font-size: 0.78rem;
       color: var(--clr-text-muted);
       margin-bottom: 1.5rem;
       line-height: 1.5;
     }
+
     .pricing-price {
       font-size: 2.5rem;
       font-weight: 900;
       line-height: 1;
       margin-bottom: 0.3rem;
     }
+
     .pricing-price span {
       font-size: 0.9rem;
       font-weight: 400;
       color: var(--clr-text-muted);
     }
+
     .pricing-billing {
       font-size: 0.75rem;
       color: var(--clr-text-subtle);
       margin-bottom: 1.5rem;
     }
+
     .pricing-btn {
+      display: block;
       width: 100%;
       padding: 0.85rem;
       font-size: 0.8rem;
@@ -664,444 +954,521 @@
       cursor: pointer;
       transition: background 0.25s, box-shadow 0.25s;
       font-family: var(--font);
+      text-align: center;
+      text-decoration: none;
     }
+
     .pricing-btn:hover {
       background: var(--clr-fuchsia);
-      box-shadow: 0 6px 20px rgba(217,105,155,0.35);
+      box-shadow: 0 6px 20px rgba(217, 105, 155, 0.35);
     }
+
     .pricing-card--featured .pricing-btn {
       background: var(--clr-fuchsia);
     }
+
     .pricing-card--featured .pricing-btn:hover {
       background: #c45388;
     }
+
     .pricing-divider {
       height: 1px;
-      background: rgba(255,255,255,0.07);
+      background: rgba(255, 255, 255, 0.08);
       margin-bottom: 1.5rem;
     }
+
     .pricing-section-label {
-      font-size: 0.65rem;
+      font-size: 0.68rem;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.08em;
       color: var(--clr-text-subtle);
-      margin-bottom: 0.85rem;
-      margin-top: 1.25rem;
+      margin-bottom: 0.75rem;
     }
-    .pricing-section-label:first-of-type { margin-top: 0; }
-    .pricing-features { display: flex; flex-direction: column; gap: 0.6rem; }
+
+    .pricing-features {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-bottom: 1.5rem;
+    }
+
     .pricing-features li {
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       color: var(--clr-text-muted);
-      padding-left: 1.35rem;
+      padding-left: 1.1rem;
       position: relative;
       line-height: 1.5;
     }
+
     .pricing-features li::before {
-      content: '';
+      content: '•';
       position: absolute;
       left: 0;
-      top: 0.45em;
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--clr-violet);
-      opacity: 0.7;
+      color: var(--clr-fuchsia);
+      font-size: 1rem;
+      line-height: 1.2;
     }
-    .pricing-card--featured .pricing-features li::before {
-      background: var(--clr-fuchsia);
-      opacity: 1;
-    }
+
     .pricing-not-included {
       font-size: 0.78rem;
       color: var(--clr-text-subtle);
       font-style: italic;
-      margin-top: 1rem;
+      line-height: 1.5;
     }
 
-    /* ============================================================
-       TESTIMONIALS
-    ============================================================ */
-    .section-testimonials {
-      background: var(--clr-bg-dark);
+    /* FAQ */
+    .section-faq {
       padding-block: clamp(3.5rem, 7vw, 5.5rem);
     }
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
-      margin-top: 3rem;
-    }
-    .testimonial-card {
-      background: var(--clr-bg-card);
-      border-radius: var(--r-md);
-      padding: 1.75rem;
-    }
-    .testimonial-stars {
-      color: #FFD056;
-      font-size: 0.9rem;
-      letter-spacing: 2px;
-      margin-bottom: 1rem;
-    }
-    .testimonial-quote {
-      font-size: 0.875rem;
-      color: var(--clr-text-muted);
-      line-height: 1.75;
-      margin-bottom: 1.5rem;
-    }
-    .testimonial-author {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-    .testimonial-avatar {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      object-fit: cover;
-      flex-shrink: 0;
-    }
-    .testimonial-name {
-      font-size: 0.875rem;
-      font-weight: 600;
-    }
-    .testimonial-role {
-      font-size: 0.75rem;
-      color: var(--clr-text-muted);
-    }
 
-    /* ============================================================
-       FAQ
-    ============================================================ */
-    .section-faq { padding-block: clamp(3.5rem, 7vw, 5.5rem); }
     .faq-list {
-      max-width: 760px;
+      max-width: 740px;
       margin-inline: auto;
-      margin-top: 3rem;
       display: flex;
       flex-direction: column;
-      gap: 0.65rem;
+      gap: 0.75rem;
     }
+
     .faq-item {
       background: var(--clr-bg-card);
       border-radius: var(--r-md);
       overflow: hidden;
     }
+
     .faq-q {
-      width: 100%;
-      background: none;
-      border: none;
-      padding: 1.2rem 1.5rem;
-      text-align: left;
-      color: #fff;
-      font-size: 0.8rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 1rem;
-      cursor: pointer;
+      width: 100%;
+      padding: 1.15rem 1.5rem;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #fff;
+      background: none;
+      border: none;
+      text-align: left;
     }
-    .faq-q:hover { color: var(--clr-fuchsia); }
+
     .faq-icon {
-      flex-shrink: 0;
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       color: var(--clr-fuchsia);
       transition: transform 0.3s;
-      line-height: 1;
     }
-    .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+    .faq-item.open .faq-icon {
+      transform: rotate(45deg);
+    }
+
     .faq-a {
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.4s ease;
-      padding-inline: 1.5rem;
-    }
-    .faq-item.open .faq-a { max-height: 600px; }
-    .faq-a p {
-      font-size: 0.875rem;
-      color: var(--clr-text-muted);
-      line-height: 1.75;
-      padding-bottom: 1.25rem;
+      transition: max-height 0.4s ease, padding 0.3s ease;
     }
 
-    /* ============================================================
-       COST COMPARISON
-    ============================================================ */
-    .section-compare {
-      background: var(--clr-bg-dark);
+    .faq-item.open .faq-a {
+      max-height: 300px;
+      padding: 0 1.5rem 1.25rem;
+    }
+
+    .faq-a p {
+      font-size: 0.85rem;
+      color: var(--clr-text-muted);
+      line-height: 1.7;
+    }
+
+    /* CTA */
+    .section-cta {
       padding-block: clamp(3.5rem, 7vw, 5.5rem);
     }
-    .compare-intro {
+
+    .cta-card {
+      background: linear-gradient(135deg, var(--clr-bg-card), rgba(107, 63, 160, 0.3), rgba(217, 105, 155, 0.2));
+      border-radius: var(--r-xl);
+      padding: clamp(3rem, 6vw, 5rem);
       text-align: center;
-      max-width: 680px;
+    }
+
+    .cta-card h2 {
+      font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+      margin-bottom: 1.25rem;
+    }
+
+    .cta-card p {
+      font-size: 0.92rem;
+      color: rgba(255, 255, 255, 0.85);
+      max-width: 600px;
       margin-inline: auto;
-      margin-bottom: 3.5rem;
+      margin-bottom: 2rem;
+      line-height: 1.65;
     }
-    .compare-intro h2 { margin-bottom: 1rem; }
-    .compare-intro p {
-      font-size: 0.95rem;
-      color: var(--clr-text-muted);
-      line-height: 1.75;
+
+    /* TESTIMONIALS */
+    .section-testimonials {
+      padding-block: clamp(3.5rem, 7vw, 5.5rem);
     }
-    .compare-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1rem;
+
+    .testimonials-heading {
+      text-align: center;
       margin-bottom: 3rem;
     }
-    .compare-card {
+
+    .testimonials-heading h2 {
+      font-size: clamp(1.75rem, 4vw, 3rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.6rem;
+    }
+
+    .testimonials-heading p {
+      font-size: 0.9rem;
+      color: var(--clr-text-muted);
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .testimonial-card {
       background: var(--clr-bg-card);
       border-radius: var(--r-md);
-      padding: 1.75rem 1.5rem;
-      text-align: center;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
-    .compare-card--writerly {
-      background: linear-gradient(160deg, #221848 0%, #1C1640 100%);
-      border: 1px solid var(--clr-fuchsia);
-      position: relative;
+
+    .testimonial-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(137, 68, 186, 0.15);
     }
-    .compare-card--writerly::before {
-      content: 'Writerly';
-      position: absolute;
-      top: -13px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--clr-fuchsia);
-      color: #fff;
+
+    .testimonial-card--featured {
+      border-left: 3px solid var(--clr-fuchsia);
+    }
+
+    .testimonial-industry {
       font-size: 0.65rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.1em;
-      padding: 0.3rem 1rem;
-      border-radius: var(--r-pill);
-    }
-    .compare-option {
-      font-size: 0.72rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--clr-text-muted);
-      margin-bottom: 0.75rem;
-    }
-    .compare-card--writerly .compare-option { color: var(--clr-fuchsia); }
-    .compare-cost {
-      font-size: 1.5rem;
-      font-weight: 900;
-      line-height: 1.1;
-      margin-bottom: 0.3rem;
-    }
-    .compare-cost-note {
-      font-size: 0.72rem;
-      color: var(--clr-text-subtle);
-      margin-bottom: 1.25rem;
-    }
-    .compare-pros { display: flex; flex-direction: column; gap: 0.5rem; text-align: left; }
-    .compare-pros li {
-      font-size: 0.78rem;
-      color: var(--clr-text-muted);
-      padding-left: 1.1rem;
-      position: relative;
-      line-height: 1.5;
-    }
-    .compare-pros li::before {
-      content: '✓';
-      position: absolute;
-      left: 0;
-      color: var(--clr-teal);
-      font-size: 0.7rem;
-    }
-    .compare-cons { display: flex; flex-direction: column; gap: 0.5rem; text-align: left; margin-top: 0.75rem; }
-    .compare-cons li {
-      font-size: 0.78rem;
-      color: var(--clr-text-subtle);
-      padding-left: 1.1rem;
-      position: relative;
-      line-height: 1.5;
-    }
-    .compare-cons li::before {
-      content: '✗';
-      position: absolute;
-      left: 0;
-      color: rgba(255,255,255,0.2);
-      font-size: 0.7rem;
-    }
-    .compare-card--writerly .compare-pros li { color: #fff; }
-    .compare-card--writerly .compare-pros li::before { color: var(--clr-fuchsia); }
-
-    .compare-statement {
-      background: var(--clr-bg-card);
-      border-radius: var(--r-lg);
-      padding: 2rem 2.5rem;
-      text-align: center;
-      max-width: 780px;
-      margin-inline: auto;
-    }
-    .compare-statement p {
-      font-size: 1rem;
-      line-height: 1.75;
-      color: var(--clr-text-muted);
-    }
-    .compare-statement strong { color: #fff; }
-    .compare-statement .highlight { color: var(--clr-fuchsia); font-weight: 700; }
-
-    @media (max-width: 900px) {
-      .compare-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 540px) {
-      .compare-grid { grid-template-columns: 1fr; }
-    }
-
-    /* ============================================================
-       FINAL CTA
-    ============================================================ */
-    .section-cta { padding-block: clamp(2.5rem, 5vw, 4rem); }
-    .cta-card {
-      background: linear-gradient(135deg, #2B2080 0%, #4B31A0 45%, #5D3DB8 100%);
-      border-radius: var(--r-xl);
-      padding: clamp(3rem, 6vw, 4.5rem) clamp(2rem, 5vw, 3.5rem);
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    /* Wave texture overlay */
-    .cta-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image:
-        repeating-linear-gradient(
-          -45deg,
-          rgba(255,255,255,0.02) 0px,
-          rgba(255,255,255,0.02) 1px,
-          transparent 1px,
-          transparent 8px
-        );
-      pointer-events: none;
-    }
-    .cta-card > * { position: relative; z-index: 1; }
-    .cta-card h2 {
-      font-size: clamp(1.6rem, 3.5vw, 2.5rem);
-      font-weight: 900;
-      text-transform: uppercase;
-      max-width: 600px;
-      margin-inline: auto;
+      color: var(--clr-fuchsia);
       margin-bottom: 1rem;
-      line-height: 1.15;
-    }
-    .cta-card p {
-      font-size: 0.9rem;
-      color: rgba(255, 255, 255, 0.75);
-      max-width: 440px;
-      margin-inline: auto;
-      margin-bottom: 2rem;
-      line-height: 1.75;
     }
 
-    /* ============================================================
-       FOOTER
-    ============================================================ */
-    .footer {
-      background: var(--clr-bg-darkest);
-      border-top: 1px solid rgba(255,255,255,0.06);
-      padding-block: 3.5rem;
-    }
-    .footer__inner {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 4rem;
-      align-items: start;
-    }
-    .footer__newsletter h3 {
-      font-size: 1.1rem;
-      font-weight: 700;
-      margin-bottom: 1.25rem;
-    }
-    .newsletter-form {
-      display: flex;
-      gap: 0.5rem;
-      max-width: 380px;
-    }
-    .newsletter-input {
+    .testimonial-quote {
+      font-size: 0.88rem;
+      color: var(--clr-text-muted);
+      line-height: 1.75;
+      font-style: italic;
+      margin-bottom: 1.5rem;
       flex: 1;
-      background: var(--clr-bg-card);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: var(--r-sm);
-      padding: 0.65rem 1rem;
-      color: #fff;
-      font-family: var(--font);
-      font-size: 0.875rem;
-      outline: none;
-      transition: border-color 0.2s;
     }
-    .newsletter-input::placeholder { color: var(--clr-text-subtle); }
-    .newsletter-input:focus { border-color: rgba(137, 68, 186, 0.5); }
-    .newsletter-submit {
-      background: var(--clr-fuchsia);
+
+    .testimonial-card--featured .testimonial-quote {
       color: #fff;
-      border: none;
-      border-radius: var(--r-sm);
-      padding: 0.65rem 1.25rem;
-      font-size: 0.875rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.25s;
-      white-space: nowrap;
+      font-size: 0.92rem;
     }
-    .newsletter-submit:hover { background: #c45388; }
-    .footer__links h4 {
-      font-size: 0.875rem;
+
+    .testimonial-author {
+      font-size: 0.82rem;
       font-weight: 700;
+      color: #fff;
+    }
+
+    .testimonial-role {
+      font-size: 0.72rem;
+      color: var(--clr-text-subtle);
+      margin-top: 0.15rem;
+    }
+
+    /* FOOTER */
+    .footer {
+      padding-block: 3rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .footer__inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 3rem;
+    }
+
+    .footer__brand {
+      max-width: 280px;
+    }
+
+    .footer__brand img {
+      height: 32px;
+      width: auto;
       margin-bottom: 1rem;
     }
-    .footer__links ul { display: flex; flex-direction: column; gap: 0.6rem; }
+
+    .footer__brand p {
+      font-size: 0.78rem;
+      color: var(--clr-text-muted);
+      line-height: 1.6;
+      margin-bottom: 1.25rem;
+    }
+
+    .footer__social {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .footer__social a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: var(--clr-text-muted);
+      font-size: 0.75rem;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .footer__social a:hover {
+      border-color: var(--clr-fuchsia);
+      color: var(--clr-fuchsia);
+    }
+
+    .footer__links h4 {
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+    }
+
+    .footer__links ul {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
     .footer__links a {
-      font-size: 0.875rem;
+      font-size: 0.82rem;
       color: var(--clr-text-muted);
       transition: color 0.2s;
     }
-    .footer__links a:hover { color: var(--clr-teal); }
 
-    /* ============================================================
-       RESPONSIVE
-    ============================================================ */
-    @media (max-width: 1060px) {
-      .pricing-grid { grid-template-columns: 1fr; max-width: 520px; margin-inline: auto; }
+    .footer__links a:hover {
+      color: var(--clr-fuchsia);
     }
+
+    .footer__cta {
+      text-align: center;
+    }
+
+    .footer__cta p {
+      font-size: 0.78rem;
+      color: var(--clr-text-muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .footer__bottom {
+      margin-top: 2.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      font-size: 0.72rem;
+      color: var(--clr-text-muted);
+      text-align: center;
+    }
+
+    /* Responsive */
     @media (max-width: 900px) {
-      .hero__inner,
-      .reality-wrap,
-      .split-grid,
-      .magic-feature,
-      .magic-feature--reverse .magic-img,
-      .testimonials-grid,
-      .footer__inner {
+      .hero__inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .hero__sub {
+        margin-inline: auto;
+      }
+
+      .hero__stats {
+        justify-content: center;
+      }
+
+      .hero__image {
+        margin-top: 2rem;
+      }
+
+      .hero__tagline {
+        white-space: normal;
+      }
+
+      .reality-wrap {
         grid-template-columns: 1fr;
       }
-      .magic-feature--reverse .magic-img { order: 0; }
-      .features-grid { grid-template-columns: repeat(2, 1fr); }
-      .nav__links { display: none; }
+
+      .reality-img {
+        display: none;
+      }
+
+      .compare-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .split-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .magic-feature {
+        grid-template-columns: 1fr;
+      }
+
+      .magic-feature:nth-child(odd) .magic-img {
+        order: 0;
+      }
+
+      .magic-img {
+        display: none;
+      }
+
+      .magic-content {
+        background: var(--clr-bg-card);
+        border-radius: var(--r-lg);
+        padding: 1.75rem;
+      }
+
+      .magic-desktop-cta {
+        display: none;
+      }
+
+      .magic-cta {
+        display: block;
+      }
+
+      .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer__inner {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 1.5rem;
+      }
+
+      .footer__brand {
+        max-width: 100%;
+        text-align: center;
+      }
+
+      .footer__brand img {
+        margin-inline: auto;
+      }
+
+      .footer__social {
+        justify-content: center;
+      }
+
+      .footer__links ul {
+        flex-direction: row;
+        gap: 1.5rem;
+        justify-content: center;
+      }
+
+      .footer__cta {
+        text-align: center;
+      }
+
+      .pricing-grid {
+        grid-template-columns: 1fr;
+        max-width: 420px;
+        margin-inline: auto;
+      }
+
+      .compare-statement,
+      .pricing-value-banner {
+        padding: 1.5rem 1.75rem;
+      }
     }
 
-    @media (max-width: 560px) {
-      .features-grid { grid-template-columns: 1fr; }
-      .hero__stats { flex-direction: column; gap: 1.25rem; }
+    @media (max-width: 600px) {
+      .nav__links {
+        display: none;
+      }
+
+      .nav__burger {
+        display: block;
+      }
+
+      .nav .btn--ghost-fuchsia {
+        display: none;
+      }
+
+      .hero__title {
+        font-size: clamp(2rem, 8vw, 3rem);
+      }
+
+      .hero__tagline {
+        font-size: 0.6rem;
+      }
+
+      .compare-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .magic-content .btn {
+        display: block;
+        text-align: center;
+        width: 100%;
+      }
+
+      .cta-card .btn {
+        display: block;
+        text-align: center;
+        width: 100%;
+      }
+
+      .section-heading h2 {
+        font-size: clamp(1.4rem, 5vw, 2rem);
+      }
+
+      .compare-intro h2 {
+        font-size: clamp(1.4rem, 5vw, 2rem);
+      }
+
+      .magic-heading h2 {
+        font-size: clamp(1.4rem, 5vw, 2rem);
+      }
+
+      .grid-heading h2 {
+        font-size: clamp(1.4rem, 5vw, 2rem);
+      }
+
+      .cta-card h2 {
+        font-size: clamp(1.3rem, 5vw, 1.8rem);
+      }
+
+      .footer__links ul {
+        gap: 1rem;
+      }
     }
   </style>
 </head>
 <body>
-
-  <!-- ============================================================
-       NAVIGATION
-  ============================================================ -->
   <nav class="nav">
     <div class="container">
       <div class="nav__inner">
         <a href="#" class="nav__logo">
-          <img src="assets/cropped-Writerly-Logos.png" alt="Writerly">
+          <img src="https://writerly-sigma.vercel.app/assets/cropped-Writerly-Logos.png" alt="Writerly">
         </a>
         <ul class="nav__links">
           <li><a href="#">Home</a></li>
@@ -1109,97 +1476,82 @@
           <li><a href="#features">Features</a></li>
           <li><a href="#pricing">Pricing</a></li>
         </ul>
-        <a href="https://cal.com/cat-valverde-r6ttvu/writerly" target="_blank" rel="noopener" class="btn btn--ghost-fuchsia">
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-            <circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.5"/>
-            <path d="M7 4.5V9.5M4.5 7H9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
-          Get Started
-        </a>
+        <a href="https://cal.com/cat-valverde-r6ttvu/writerly" target="_blank" rel="noopener" class="btn btn--ghost-fuchsia">Book Demo</a>
+        <button class="nav__burger" aria-label="Menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
     </div>
   </nav>
+  <div class="nav__mobile-menu">
+    <a href="#">Home</a>
+    <a href="#how-it-works">How It Works</a>
+    <a href="#features">Features</a>
+    <a href="#pricing">Pricing</a>
+    <a href="https://cal.com/cat-valverde-r6ttvu/writerly" target="_blank" rel="noopener" class="btn btn--ghost-fuchsia">Book Demo</a>
+  </div>
 
-
-  <!-- ============================================================
-       HERO
-  ============================================================ -->
   <section class="hero">
     <div class="container">
       <div class="hero__inner">
-
         <div class="hero__content reveal">
           <h1 class="hero__title">
             Authentic Content
             <em>20X<br>Faster</em>
           </h1>
-          <p class="hero__sub">A managed content marketing program that pairs a dedicated brand strategist with a custom AI voice engine, so everything published sounds exactly like you. Under an hour a week.</p>
-
-          <a href="#how-it-works" class="btn btn--ghost-fuchsia">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-              <circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M7 4.5V9.5M4.5 7H9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-            </svg>
-            Learn How
-          </a>
-
+          <p class="hero__sub">You talk. We draft, edit, and publish — in your voice, across every channel that matters. Under an hour a week from you.</p>
+          <a href="#how-it-works" class="btn btn--ghost-fuchsia">See How It Works</a>
           <div class="hero__stats">
             <div class="stat">
               <div class="stat__top">
-                <img class="stat__icon" src="assets/Magnet.png" alt="">
-                <span class="stat__num js-count" data-target="70">0</span><span class="stat__pct">%</span>
+                <img class="stat__icon" src="https://writerly-sigma.vercel.app/assets/Magnet.png" alt="">
+                <span class="stat__num js-count" data-target="70">70</span><span class="stat__pct">%</span>
               </div>
               <span class="stat__label">Report New Leads</span>
             </div>
             <div class="stat">
               <div class="stat__top">
-                <img class="stat__icon" src="assets/Lightning.png" alt="">
-                <span class="stat__num js-count" data-target="90">0</span><span class="stat__pct">%</span>
+                <img class="stat__icon" src="https://writerly-sigma.vercel.app/assets/Lightning.png" alt="">
+                <span class="stat__num js-count" data-target="90">90</span><span class="stat__pct">%</span>
               </div>
               <span class="stat__label">Avg. Time Savings</span>
             </div>
           </div>
-
           <p class="hero__tagline">
             Not Just Another AI Tool, a Full Marketing Team. Built on <span>Your Voice.</span>
           </p>
         </div>
-
         <div class="hero__image reveal delay-2">
-          <img src="assets/WRITERLY-5.png" alt="Writerly – Your voice, scaled">
+          <img src="https://writerly-sigma.vercel.app/assets/WRITERLY-5.png" alt="Writerly – Your voice, scaled">
         </div>
-
       </div>
     </div>
   </section>
 
+  <hr class="section-divider">
 
-  <!-- ============================================================
-       BUSINESS CARD
-  ============================================================ -->
   <section class="section-business">
     <div class="container">
       <div class="business-card reveal">
         <h2>You're Running a Business,<br>Not a Content Mill</h2>
-        <p>You have ideas worth sharing, ideas that could drive deals, attract talent, and build your authority. But between meetings, strategy sessions, and actually running your company, who has 10+ hours a week for LinkedIn and thought leadership? The challenge isn't that you don't have insights worth sharing. It's that turning those insights into consistent, high-quality content is a grind that doesn't fit a founder's schedule. <strong>That's exactly what Writerly solves.</strong></p>
+        <p>You have ideas worth sharing — ideas that could drive deals, attract talent, and build your authority. But who has 10+ hours a week for LinkedIn and thought leadership?</p>
+        <p style="margin-top: 1.25rem;">The problem isn't the ideas. It's the grind of turning them into content.</p>
+        <p class="highlight" style="margin-top: 1.25rem; font-size: 1.05rem; font-weight: 700;">That's exactly what Writerly solves.</p>
       </div>
     </div>
   </section>
 
-
-  <!-- ============================================================
-       THE REALITY
-  ============================================================ -->
-  <section class="section-reality" id="how-it-works">
+  <section class="section-reality">
     <div class="container">
       <div class="section-heading reveal">
         <h2>The Reality</h2>
         <p>You've tried every workaround, and none of them work.</p>
       </div>
-
       <div class="reality-wrap">
         <div class="reality-list">
-          <div class="reality-item reality-item--active reveal delay-1">
+          <div class="reality-item reveal delay-1">
             <span class="reality-num-badge">01</span>
             <div class="reality-item-body">
               <p class="reality-text">Your best ideas are trapped in voice notes, meeting recordings, or your head.</p>
@@ -1225,27 +1577,42 @@
           </div>
         </div>
         <div class="reality-img reveal delay-2">
-          <img src="assets/WRITERLY-10.png" alt="">
+          <img src="https://writerly-sigma.vercel.app/assets/WRITERLY-10.png" alt="">
         </div>
       </div>
     </div>
   </section>
 
+  <hr class="section-divider">
 
-  <!-- ============================================================
-       COST COMPARISON
-  ============================================================ -->
   <section class="section-compare">
     <div class="container">
       <div class="compare-intro reveal">
         <h2>Your Marketing Team,<br>Without the Price Tag</h2>
         <p>When founders weigh the alternatives, the math doesn't lie. You're not comparing Writerly to a tool, you're comparing it to a full content department. And it's not even close.</p>
       </div>
-
       <div class="compare-grid">
         <div class="compare-card reveal delay-1">
+          <p class="compare-label">Time-Consuming</p>
+          <p class="compare-option">DIY with ChatGPT</p>
+          <div class="compare-cost">10–15<span> hrs/wk</span></div>
+          <p class="compare-cost-note">Plus tool subscriptions</p>
+          <ul class="compare-pros">
+            <li>Low direct cost</li>
+            <li>Full control</li>
+          </ul>
+          <ul class="compare-cons">
+            <li>Sounds like everyone else</li>
+            <li>No memory of your voice</li>
+            <li>You're doing all the work</li>
+            <li>Inconsistent output & quality</li>
+          </ul>
+        </div>
+
+        <div class="compare-card reveal delay-2">
+          <p class="compare-label">Hard to Scale</p>
           <p class="compare-option">Ghostwriter</p>
-          <p class="compare-cost">$5K+<span style="font-size:0.9rem;font-weight:400;color:var(--clr-text-subtle)">/mo</span></p>
+          <div class="compare-cost">$5K+<span>/mo</span></div>
           <p class="compare-cost-note">For only a handful of posts</p>
           <ul class="compare-pros">
             <li>Human written</li>
@@ -1259,9 +1626,10 @@
           </ul>
         </div>
 
-        <div class="compare-card reveal delay-2">
+        <div class="compare-card reveal delay-3">
+          <p class="compare-label">Expensive</p>
           <p class="compare-option">Content Hire</p>
-          <p class="compare-cost">$10K+<span style="font-size:0.9rem;font-weight:400;color:var(--clr-text-subtle)">/mo</span></p>
+          <div class="compare-cost">$10K+<span>/mo</span></div>
           <p class="compare-cost-note">$120K+ loaded, 4-month ramp</p>
           <ul class="compare-pros">
             <li>Dedicated resource</li>
@@ -1270,30 +1638,14 @@
           <ul class="compare-cons">
             <li>Covers one executive at quality</li>
             <li>Months to ramp before value</li>
-            <li>Benefits, management overhead</li>
+            <li>Benefits management overhead</li>
             <li>You lose everything when they quit</li>
-          </ul>
-        </div>
-
-        <div class="compare-card reveal delay-3">
-          <p class="compare-option">DIY with ChatGPT</p>
-          <p class="compare-cost">10–15 hrs<span style="font-size:0.9rem;font-weight:400;color:var(--clr-text-subtle)">/wk</span></p>
-          <p class="compare-cost-note">Plus tool subscriptions</p>
-          <ul class="compare-pros">
-            <li>Low direct cost</li>
-            <li>Full control</li>
-          </ul>
-          <ul class="compare-cons">
-            <li>Sounds like everyone else</li>
-            <li>No memory of your voice</li>
-            <li>You're doing all the work</li>
-            <li>Inconsistent output &amp; quality</li>
           </ul>
         </div>
 
         <div class="compare-card compare-card--writerly reveal delay-4">
           <p class="compare-option">Writerly</p>
-          <p class="compare-cost">From $2K<span style="font-size:0.9rem;font-weight:400;color:var(--clr-text-subtle)">/mo</span></p>
+          <div class="compare-cost">From $2K<span>/mo</span></div>
           <p class="compare-cost-note">Under 1 hour/week from you</p>
           <ul class="compare-pros">
             <li>Custom AI trained on your voice</li>
@@ -1307,132 +1659,112 @@
       </div>
 
       <div class="compare-statement reveal">
-        <p>The AI knows your voice. The strategist knows your market. <span class="highlight">You just talk.</span> For less than the cost of a single ghostwriter, you get <strong>a complete content marketing function</strong>, strategist, editors, AI engine, and a full pipeline, all working together so you can stay focused on running your business.</p>
+        <p>The AI knows your voice. The strategist knows your market. <strong>You just talk.</strong></p>
+        <p style="margin-top: 1rem;">For less than the cost of a single ghostwriter, you get <span class="highlight">a complete content marketing function</span> — strategist, editors, AI engine, and a full pipeline — all working together so you can stay focused on running your business.</p>
       </div>
     </div>
   </section>
 
-
-  <!-- ============================================================
-       FEATURES SPLIT
-  ============================================================ -->
-  <section class="section-split" id="features">
+  <section class="section-split">
     <div class="container">
       <div class="split-grid">
         <div class="split-card reveal">
           <h2>What if your content sounded exactly like you, without you writing it?</h2>
-          <p>After evaluating hundreds of AI content platforms for our clients, we found only one sophisticated enough for executive communication. We've partnered with <a href="#">The Agent C</a> to bring you a premium AI content system that actually learns how you think, speak, and communicate.</p>
+          <p>After evaluating hundreds of AI content platforms for our clients, we found only one sophisticated enough for executive communication. We've partnered with <a href="https://getagentc.ai" target="_blank" rel="noopener">The Agent C</a> to bring you a premium AI content system that actually learns how you think, speak, and communicate.</p>
         </div>
         <div class="split-card reveal delay-2">
           <h2>It's Still You,<br>Just Faster</h2>
-          <p>Writerly doesn't generate ideas or put words in your mouth. It takes what's already in your head (your insights, your opinions, your hard-won expertise) and turns them into content that actually moves the needle. <strong>You think, we draft and scale.</strong></p>
+          <p>Writerly doesn't generate ideas or put words in your mouth. It takes what's already in your head (your insights, your opinions, your hard-won expertise) and turns them into content that actually moves the needle. <strong class="highlight">You think, we draft and scale.</strong></p>
         </div>
       </div>
     </div>
   </section>
 
-
-  <!-- ============================================================
-       WRITERLY MAGIC
-  ============================================================ -->
-  <section class="section-magic">
+  <section class="section-magic" id="how-it-works">
     <div class="container">
-
       <div class="magic-heading reveal">
         <h2>The Writerly Magic</h2>
         <p>This is your personal content team, trained on your voice, your expertise, and your business, ready to turn scattered thoughts into strategic content that drives real results.</p>
       </div>
 
-      <!-- Feature 1: text left / image right -->
       <div class="magic-feature">
         <div class="magic-content reveal">
           <span class="magic-label">Your Executive Voice Engine</span>
           <h3>Trained on How You Actually Think and Speak</h3>
           <p>You send us your raw thoughts in voice notes, meeting recordings, talking points, whatever's in your head. Our team feeds that into a private AI engine built on The Agent C platform, trained specifically on how you think, speak, and see your market.</p>
-          <a href="https://cal.com/cat-valverde-r6ttvu/writerly" target="_blank" rel="noopener" class="btn btn--ghost-fuchsia">
-            <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path d="M2 9.5L6.5 2.5L11 9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Start Writing
-          </a>
+          <a href="https://cal.com/cat-valverde-r6ttvu/writerly" target="_blank" rel="noopener" class="btn btn--ghost-fuchsia magic-desktop-cta">Book Demo</a>
         </div>
         <div class="magic-img reveal delay-2">
-          <img src="assets/WRITERLY-14.png" alt="Voice engine">
+          <img src="https://writerly-sigma.vercel.app/assets/WRITERLY-14.png" alt="">
         </div>
       </div>
 
-      <!-- Feature 2: image left / text right -->
-      <div class="magic-feature magic-feature--reverse">
+      <div class="magic-feature">
         <div class="magic-content reveal">
           <span class="magic-label">Closed-Loop Content System</span>
           <h3>Your Ideas In. Ready-to-Publish Content Out.</h3>
           <p>The AI drafts. Our editors refine. You get polished, publish-ready content that sounds unmistakably like you, and all you have to do is hit "post".</p>
-          <a href="https://cal.com/cat-valverde-r6ttvu/writerly" target="_blank" rel="noopener" class="btn btn--ghost-fuchsia">
-            <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path d="M2 9.5L6.5 2.5L11 9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Start Writing
-          </a>
+          <a href="https://cal.com/cat-valverde-r6ttvu/writerly" target="_blank" rel="noopener" class="btn btn--ghost-fuchsia magic-desktop-cta">Book Demo</a>
         </div>
         <div class="magic-img reveal delay-2">
-          <img src="assets/WRITERLY-15.png" alt="Content system">
+          <img src="https://writerly-sigma.vercel.app/assets/WRITERLY-15.png" alt="">
         </div>
       </div>
 
-      <!-- Feature 3: text left / image right -->
       <div class="magic-feature">
         <div class="magic-content reveal">
-          <span class="magic-label">Multi-Channel Output, One Source of Truth</span>
+          <span class="magic-label">Multi-Channel Output</span>
           <h3>One Insight Becomes Content Everywhere</h3>
-          <p>A single idea can generate LinkedIn posts, newsletters, blogs, video scripts, internal updates, and more, without drifting off-message. Everything stays aligned to your voice, your goals, and your brand, even as volume scales.</p>
-          <a href="https://cal.com/cat-valverde-r6ttvu/writerly" target="_blank" rel="noopener" class="btn btn--ghost-fuchsia">
-            <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path d="M2 9.5L6.5 2.5L11 9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Start Writing
-          </a>
+          <p>A single idea can generate LinkedIn posts, newsletters, blogs, video scripts, and more — without drifting off-message. Everything stays aligned to your voice, your goals, and your brand, even as volume scales.</p>
+          <a href="https://cal.com/cat-valverde-r6ttvu/writerly" target="_blank" rel="noopener" class="btn btn--ghost-fuchsia magic-desktop-cta">Book Demo</a>
         </div>
         <div class="magic-img reveal delay-2">
-          <img src="assets/WRITERLY-10.png" alt="Multi-channel">
+          <img src="https://writerly-sigma.vercel.app/assets/WRITERLY-10.png" alt="">
         </div>
       </div>
 
+      <div class="magic-cta reveal" style="text-align: center; margin-top: 2rem; display: none;">
+        <a href="https://cal.com/cat-valverde-r6ttvu/writerly" target="_blank" rel="noopener" class="btn btn--ghost-fuchsia">Book Demo</a>
+      </div>
     </div>
   </section>
 
+  <hr class="section-divider">
 
-  <!-- ============================================================
-       FEATURES GRID
-  ============================================================ -->
-  <section class="section-grid">
+  <section class="section-grid" id="features">
     <div class="container">
       <div class="grid-heading reveal">
-        <h2>Time Investment: Less Than One Hour Per Week.</h2>
-        <p>What you get with Writerly</p>
+        <h2>What You Get with Writerly</h2>
+        <p style="margin-top: 0.5rem; font-size: 1.05rem; color: var(--clr-fuchsia); font-weight: 700;">Time investment: less than one hour per week.</p>
       </div>
-
       <div class="features-grid">
         <div class="feature-item reveal delay-1">
-          <img class="feature-item__icon" src="assets/Purple Check.png" alt="">
+          <svg class="feature-item__icon" viewBox="0 0 24 24" fill="none" stroke="#8944BA" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
           <h3>Executive-Calibrated AI Content Engine</h3>
           <p>Custom-trained on your voice, ideas, and business context, not generic ChatGPT prompts</p>
         </div>
         <div class="feature-item reveal delay-2">
-          <img class="feature-item__icon" src="assets/Blue Check.png" alt="">
+          <svg class="feature-item__icon" viewBox="0 0 24 24" fill="none" stroke="#8944BA" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
           <h3>Multi-Format Repurposing</h3>
           <p>One idea becomes LinkedIn posts, tweets, blog articles, email newsletters, video scripts, and more</p>
         </div>
         <div class="feature-item reveal delay-3">
-          <img class="feature-item__icon" src="assets/Purple Check.png" alt="">
+          <svg class="feature-item__icon" viewBox="0 0 24 24" fill="none" stroke="#8944BA" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
           <h3>3 Team Seats Included</h3>
-          <p>Your chief of staff, marketing lead, or ghostwriter can access the system to help with editing and distribution</p>
+          <p>Your chief of staff, marketing lead, or ghostwriter can collaborate on editing, review, and distribution</p>
         </div>
         <div class="feature-item reveal delay-4">
-          <img class="feature-item__icon" src="assets/Blue Check.png" alt="">
+          <svg class="feature-item__icon" viewBox="0 0 24 24" fill="none" stroke="#8944BA" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>
           <h3>Regular Content Briefings</h3>
           <p>Never stare at a blank page again. Get personalized content suggestions based on your business goals</p>
         </div>
         <div class="feature-item reveal delay-5">
-          <img class="feature-item__icon" src="assets/Purple Check.png" alt="">
+          <svg class="feature-item__icon" viewBox="0 0 24 24" fill="none" stroke="#8944BA" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
           <h3>Dedicated Brand Strategist</h3>
           <p>1:1 support from a Writerly strategist who ensures your content drives business outcomes</p>
         </div>
         <div class="feature-item reveal delay-6">
-          <img class="feature-item__icon" src="assets/Blue Check.png" alt="">
+          <svg class="feature-item__icon" viewBox="0 0 24 24" fill="none" stroke="#8944BA" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>
           <h3>Feedback Loops That Learn</h3>
           <p>The more we work together, the sharper your engine gets, continuously refined to match your evolving voice and goals</p>
         </div>
@@ -1440,10 +1772,36 @@
     </div>
   </section>
 
+  <section class="section-testimonials">
+    <div class="container">
+      <div class="testimonials-heading reveal">
+        <h2>From the People Who Use It</h2>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card testimonial-card--featured reveal delay-1">
+          <p class="testimonial-industry">Fintech</p>
+          <p class="testimonial-quote">"I run two businesses and have young kids. I don't have a minute to waste. Writerly turns my voice memos into posts and my posts into blogs. My engagement has doubled and so has my deal flow."</p>
+          <p class="testimonial-author">Carlos C.</p>
+          <p class="testimonial-role">Managing Partner, Growth Consulting</p>
+        </div>
+        <div class="testimonial-card reveal delay-2">
+          <p class="testimonial-industry">Executive Advisory</p>
+          <p class="testimonial-quote">"The first draft needed maybe 15 words changed. I tried the same thing in ChatGPT with all my context loaded and it was cold, generic — I didn't want to use it. Night and day difference."</p>
+          <p class="testimonial-author">Dan S.</p>
+          <p class="testimonial-role">Author & Fractional CHRO</p>
+        </div>
+        <div class="testimonial-card reveal delay-3">
+          <p class="testimonial-industry">SaaS Founder</p>
+          <p class="testimonial-quote">"We used to work with ghostwriters but they could never meet my quality bar. With Writerly I can finally post as myself — consistently, without it eating my whole week."</p>
+          <p class="testimonial-author">Oseas R.</p>
+          <p class="testimonial-role">Founder & CEO</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <!-- ============================================================
-       PRICING
-  ============================================================ -->
+  <hr class="section-divider">
+
   <section class="section-pricing" id="pricing">
     <div class="container">
       <div class="section-heading reveal">
@@ -1451,27 +1809,25 @@
         <p>Choose the level of support that fits your stage and how you like to operate</p>
       </div>
 
-      <!-- Value proposition banner -->
       <div class="pricing-value-banner reveal">
-        <p>Every Writerly plan gives you <strong>more than just an AI tool</strong>, you're getting a <span class="highlight">complete marketing function</span> without the $120K+/year price tag of a full-time hire. A dedicated brand strategist, senior editors, a custom-trained AI voice engine, and a full content pipeline, all under one roof. <strong>Managed content marketing, trained on your voice.</strong></p>
+        <p>Every Writerly plan gives you <strong>more than just an AI tool</strong> — you're getting a <span class="highlight">complete marketing function</span> without the $120K+/year price tag of a full-time hire.</p>
+        <p style="margin-top: 1.25rem;">A dedicated brand strategist, senior editors, a custom-trained AI voice engine, and a full content pipeline — all under one roof. <strong class="highlight">Managed content marketing, trained on your voice.</strong></p>
       </div>
 
       <div class="pricing-grid">
-
-        <!-- TIER 1: DIY -->
         <div class="pricing-card reveal delay-1">
           <p class="pricing-tier">Tier 1</p>
           <p class="pricing-name">The Voice Engine</p>
           <p class="pricing-tagline">You have a team. You just need the engine.</p>
           <p class="pricing-price">$2,000<span>/mo</span></p>
           <p class="pricing-billing">3-month minimum · $1,000 one-time setup fee</p>
-          <a href="https://cal.com/cat-valverde-r6ttvu/writerly" target="_blank" rel="noopener" class="pricing-btn">Get Started</a>
+          <a href="https://cal.com/cat-valverde-r6ttvu/writerly" target="_blank" rel="noopener" class="pricing-btn">Book Demo</a>
           <div class="pricing-divider"></div>
           <p class="pricing-section-label">Setup & Onboarding</p>
           <ul class="pricing-features">
-            <li>Executive AI voice engine, built and trained on you</li>
+            <li>Executive AI voice engine built and trained on you</li>
             <li>Voice profile calibration (tone, vocabulary, positioning)</li>
-            <li>Written onboarding guide &amp; self-serve setup documentation</li>
+            <li>Written onboarding guide & self-serve setup documentation</li>
             <li>Custom content brief templates for your team</li>
             <li>Platform walkthrough video library</li>
           </ul>
@@ -1480,26 +1836,25 @@
             <li>Unlimited AI-generated drafts via web platform</li>
             <li>Multi-format output: LinkedIn, email, blog, scripts</li>
             <li>3 user seats included</li>
-            <li>Access to prompt library &amp; content frameworks</li>
+            <li>Access to prompt library & content frameworks</li>
           </ul>
           <p class="pricing-not-included">No ongoing editorial or strategy support, fully self-directed.</p>
         </div>
 
-        <!-- TIER 2: Done With You (FEATURED) -->
         <div class="pricing-card pricing-card--featured reveal delay-2">
           <span class="pricing-badge">Most Popular</span>
           <p class="pricing-tier">Tier 2</p>
           <p class="pricing-name">The Content Partner</p>
-          <p class="pricing-tagline">AI power + human expertise, working together.</p>
+          <p class="pricing-tagline">AI + human expertise, working together.</p>
           <p class="pricing-price">$3,500<span>/mo</span></p>
           <p class="pricing-billing">3-month minimum · $1,000 one-time setup fee</p>
-          <a href="https://cal.com/cat-valverde-r6ttvu/writerly" target="_blank" rel="noopener" class="pricing-btn">Get Started</a>
+          <a href="https://cal.com/cat-valverde-r6ttvu/writerly" target="_blank" rel="noopener" class="pricing-btn">Book Demo</a>
           <div class="pricing-divider"></div>
           <p class="pricing-section-label">Everything in Tier 1, plus:</p>
           <ul class="pricing-features">
             <li>Dedicated brand strategist, your ongoing content partner</li>
             <li>Monthly strategy session (60 min) to align content with goals</li>
-            <li>AI drafts reviewed &amp; refined by a human editor</li>
+            <li>AI drafts reviewed & refined by a human editor</li>
             <li>Up to 10 publish-ready pieces per month</li>
             <li>Multi-channel repurposing from a single idea</li>
             <li>5 user seats included</li>
@@ -1508,18 +1863,17 @@
           <ul class="pricing-features">
             <li>3 custom branded images per month</li>
             <li>Quarterly voice recalibration session</li>
-            <li>Priority email &amp; Slack support</li>
+            <li>Priority email & Slack support</li>
           </ul>
         </div>
 
-        <!-- TIER 3: Done For You -->
         <div class="pricing-card reveal delay-3">
           <p class="pricing-tier">Tier 3</p>
           <p class="pricing-name">The Full Team</p>
           <p class="pricing-tagline">You think. We handle everything else.</p>
           <p class="pricing-price">$5,000<span>/mo</span></p>
           <p class="pricing-billing">3-month minimum · $1,000 one-time setup fee</p>
-          <a href="https://cal.com/cat-valverde-r6ttvu/writerly" target="_blank" rel="noopener" class="pricing-btn">Get Started</a>
+          <a href="https://cal.com/cat-valverde-r6ttvu/writerly" target="_blank" rel="noopener" class="pricing-btn">Book Demo</a>
           <div class="pricing-divider"></div>
           <p class="pricing-section-label">Everything in Tier 2, plus:</p>
           <ul class="pricing-features">
@@ -1527,12 +1881,12 @@
             <li>Bi-weekly strategy check-in (30 min)</li>
             <li>Full pipeline: AI draft → human edit → publish-ready</li>
             <li>Up to 20 publish-ready pieces per month</li>
-            <li>Video script &amp; long-form article creation</li>
-            <li>Internal comms, board updates &amp; investor content</li>
+            <li>Video script & long-form article creation</li>
+            <li>Keynotes, op-eds & long-form thought leadership</li>
             <li>5 custom branded images per month</li>
             <li>Content calendar management</li>
-            <li>Monthly performance review &amp; strategy report</li>
-            <li>Team onboarding &amp; custom workflow integrations</li>
+            <li>Monthly performance review & strategy report</li>
+            <li>Team onboarding & custom workflow integrations</li>
             <li>Up to 8 user seats</li>
           </ul>
           <p class="pricing-section-label">White-Glove Support</p>
@@ -1542,135 +1896,115 @@
             <li>Ongoing voice refinement, the longer we work together, the sharper it gets</li>
           </ul>
         </div>
-
       </div>
     </div>
   </section>
 
-
-
-
-  <!-- ============================================================
-       FAQ
-  ============================================================ -->
   <section class="section-faq" id="faq">
     <div class="container">
       <div class="section-heading reveal">
         <h2>Frequently Asked Questions</h2>
         <p>What to Expect When You Work with Writerly</p>
       </div>
-
       <div class="faq-list">
-
         <div class="faq-item reveal">
-          <button class="faq-q" aria-expanded="false">
-            Can my team work with Writerly?
-            <span class="faq-icon" aria-hidden="true">+</span>
-          </button>
-          <div class="faq-a" role="region">
-            <p>Yes. Writerly is designed for collaboration, but never requires more work from you. Your team (chief of staff, marketing lead, ghostwriter, etc.) can submit ideas, share notes, review drafts, and handle distribution if they want to be hands-on. At the same time, our team handles generating content from your ideas, editing, polishing, and keeping everything on-brand, so most clients simply review and hit Post or Publish.</p>
-          </div>
+          <button class="faq-q" aria-expanded="false">Who is Writerly for?<span class="faq-icon" aria-hidden="true">+</span></button>
+          <div class="faq-a" role="region"><p>Writerly is built for founders, CEOs, and senior executives who have expertise worth sharing but not enough time to write. If you're running a company and know that consistent visibility would drive deals, attract talent, or build authority — but content keeps falling to the bottom of the list — Writerly is for you.</p></div>
         </div>
-
         <div class="faq-item reveal">
-          <button class="faq-q" aria-expanded="false">
-            Is this only for social media?
-            <span class="faq-icon" aria-hidden="true">+</span>
-          </button>
-          <div class="faq-a" role="region">
-            <p>No. Writerly supports everything from internal communications and board updates to investor notes, event scripts, and thought leadership content.</p>
-          </div>
+          <button class="faq-q" aria-expanded="false">How is this different from just using ChatGPT?<span class="faq-icon" aria-hidden="true">+</span></button>
+          <div class="faq-a" role="region"><p>ChatGPT gives you generic outputs that sound like everyone else. Writerly's team uses a proprietary voice engine trained on YOUR voice, your business context, and your strategic positioning — so every draft sounds like you, not a bot. Plus you get a dedicated strategist and ongoing optimization so your content keeps getting sharper.</p></div>
         </div>
-
         <div class="faq-item reveal">
-          <button class="faq-q" aria-expanded="false">
-            How is this different from just using ChatGPT?
-            <span class="faq-icon" aria-hidden="true">+</span>
-          </button>
-          <div class="faq-a" role="region">
-            <p>ChatGPT gives you generic outputs that sound like everyone else. Writerly is custom-trained on YOUR voice, your business context, and your strategic positioning. Plus you get dedicated support and ongoing optimization so your content keeps getting sharper.</p>
-          </div>
+          <button class="faq-q" aria-expanded="false">Is this only for social media?<span class="faq-icon" aria-hidden="true">+</span></button>
+          <div class="faq-a" role="region"><p>No. Writerly supports all types of thought leadership content — from LinkedIn, X, and long-form blogs to keynotes, podcast scripts, and op-eds.</p></div>
         </div>
-
         <div class="faq-item reveal">
-          <button class="faq-q" aria-expanded="false">
-            What kind of input can I share?
-            <span class="faq-icon" aria-hidden="true">+</span>
-          </button>
-          <div class="faq-a" role="region">
-            <p>Voice notes, meeting recaps, rough outlines, event transcripts, podcast recordings, or casual thoughts. Whether you're in the car or between meetings, Writerly turns your raw thinking into polished content.</p>
-          </div>
+          <button class="faq-q" aria-expanded="false">What kind of input can I share?<span class="faq-icon" aria-hidden="true">+</span></button>
+          <div class="faq-a" role="region"><p>Voice notes, meeting recaps, rough outlines, event transcripts, podcast recordings, or casual thoughts. Whether you're in the car or between meetings, just send over your raw thinking — your Writerly team turns it into polished content.</p></div>
         </div>
-
         <div class="faq-item reveal">
-          <button class="faq-q" aria-expanded="false">
-            Is my data safe?
-            <span class="faq-icon" aria-hidden="true">+</span>
-          </button>
-          <div class="faq-a" role="region">
-            <p>Yes. We use trusted third-party LLMs that do not train on your data and only retain it temporarily (up to 30 days) for service delivery. Each customer's AI is fully isolated to protect your voice, privacy, and control. You maintain complete control over what gets published, nothing goes live without your approval.</p>
-          </div>
+          <button class="faq-q" aria-expanded="false">Can my team work with Writerly?<span class="faq-icon" aria-hidden="true">+</span></button>
+          <div class="faq-a" role="region"><p>Yes. Writerly works well alongside your internal team, but never requires more from you. Your chief of staff, marketing lead, or ghostwriter can submit ideas, share notes, review drafts, and handle distribution if they want to be hands-on. Meanwhile, your Writerly team handles the heavy lifting — drafting from your ideas, editing, polishing, and keeping everything on-brand. Most clients simply review and approve.</p></div>
         </div>
-
         <div class="faq-item reveal">
-          <button class="faq-q" aria-expanded="false">
-            How can business owners benefit from using Writerly?
-            <span class="faq-icon" aria-hidden="true">+</span>
-          </button>
-          <div class="faq-a" role="region">
-            <p>Writerly helps business owners turn their real insights into consistent, credible visibility without sacrificing time or focus. Instead of choosing between running the business and showing up publicly, your voice works in the background, building trust, attracting opportunities, and reinforcing authority across channels.</p>
-          </div>
+          <button class="faq-q" aria-expanded="false">Is my data safe?<span class="faq-icon" aria-hidden="true">+</span></button>
+          <div class="faq-a" role="region"><p>Yes. Your data is handled securely — we work with trusted LLMs that never train on your content and only retain it temporarily for processing. Your voice model and content are fully isolated from other clients, and nothing ever goes live without your approval. You maintain complete control over what gets published.</p></div>
         </div>
-
+        <div class="faq-item reveal">
+          <button class="faq-q" aria-expanded="false">What does the first month look like?<span class="faq-icon" aria-hidden="true">+</span></button>
+          <div class="faq-a" role="region"><p>In your first week, we build your voice engine — calibrating tone, vocabulary, and positioning from samples of how you actually communicate. By week two, you're reviewing your first drafts. Most clients are publishing consistently by the end of month one, with less than an hour a week of their time. The longer we work together, the sharper it gets.</p></div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-q" aria-expanded="false">How can business owners benefit from using Writerly?<span class="faq-icon" aria-hidden="true">+</span></button>
+          <div class="faq-a" role="region"><p>Writerly helps business owners turn their real insights into consistent, credible visibility without sacrificing time or focus. Instead of choosing between running the business and showing up publicly, your voice works in the background, building trust, attracting opportunities, and reinforcing authority across channels.</p></div>
+        </div>
       </div>
     </div>
   </section>
 
-
-  <!-- ============================================================
-       FINAL CTA
-  ============================================================ -->
   <section class="section-cta">
     <div class="container">
       <div class="cta-card reveal">
         <h2>Stop Choosing Between Running Your Company and Building Your Brand</h2>
         <p>Right now, the founders posting consistently aren't building better products, they're the ones investors find, partners approach, and prospects trust first. Writerly makes sure that's you.</p>
-        <a href="https://cal.com/cat-valverde-r6ttvu/writerly" target="_blank" rel="noopener" class="btn btn--fuchsia">
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-            <circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.5"/>
-            <path d="M7 4.5V9.5M4.5 7H9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
-          Get Started Now!
-        </a>
+        <a href="https://cal.com/cat-valverde-r6ttvu/writerly" target="_blank" rel="noopener" class="btn btn--fuchsia">Book Demo</a>
       </div>
     </div>
   </section>
 
-
-  <!-- ============================================================
-       FOOTER
-  ============================================================ -->
   <footer class="footer">
     <div class="container">
       <div class="footer__inner">
+        <div class="footer__brand">
+          <img src="https://writerly-sigma.vercel.app/assets/cropped-Writerly-Logos.png" alt="Writerly">
+          <p>Managed content marketing, trained on your voice. Built for founders who'd rather run the business than write about it.</p>
+          <div class="footer__social">
+            <a href="https://www.linkedin.com/in/catvalverde/" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+            <a href="https://www.linkedin.com/newsletters/enterprise-ai-group-7295623060731084800/" target="_blank" rel="noopener" aria-label="Newsletter">✉</a>
+            <a href="mailto:cat@getwriterly.com" aria-label="Email">@</a>
+          </div>
+        </div>
         <div class="footer__links">
-          <h4>Company</h4>
           <ul>
-            <li><a href="#pricing">Pricing</a></li>
-            <li><a href="#">About</a></li>
             <li><a href="#features">Features</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#faq">FAQ</a></li>
           </ul>
         </div>
+        <div class="footer__cta">
+          <p>Ready to get started?</p>
+          <a href="https://cal.com/cat-valverde-r6ttvu/writerly" target="_blank" rel="noopener" class="btn btn--ghost-fuchsia">Book Demo</a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        © 2026 EAI Group. All rights reserved.
       </div>
     </div>
   </footer>
 
-
-  <!-- ============================================================
-       JAVASCRIPT
-  ============================================================ -->
   <script>
-    /* ---- Scroll reveal ---- */
+    /* Hamburger menu */
+    const burger = document.querySelector('.nav__burger');
+    const mobileMenu = document.querySelector('.nav__mobile-menu');
+    if (burger && mobileMenu) {
+      burger.addEventListener('click', () => {
+        burger.classList.toggle('active');
+        mobileMenu.classList.toggle('open');
+        burger.setAttribute('aria-expanded', mobileMenu.classList.contains('open'));
+        document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+      });
+      mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          burger.classList.remove('active');
+          mobileMenu.classList.remove('open');
+          burger.setAttribute('aria-expanded', 'false');
+          document.body.style.overflow = '';
+        });
+      });
+    }
+
+    /* Scroll reveal */
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -1679,24 +2013,21 @@
         }
       });
     }, { threshold: 0.12 });
-
     document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-    /* ---- Counter animation ---- */
+    /* Counter animation */
     function animateCount(el) {
       const target = parseInt(el.dataset.target, 10);
       const duration = 1400;
       const start = performance.now();
       function step(now) {
         const progress = Math.min((now - start) / duration, 1);
-        // ease-out cubic
         const eased = 1 - Math.pow(1 - progress, 3);
         el.textContent = Math.round(eased * target);
         if (progress < 1) requestAnimationFrame(step);
       }
       requestAnimationFrame(step);
     }
-
     const countObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -1705,32 +2036,46 @@
         }
       });
     }, { threshold: 0.5 });
-
     document.querySelectorAll('.js-count').forEach(el => countObserver.observe(el));
 
-    /* ---- FAQ accordion ---- */
+    /* Reality steps – light up sequentially on scroll */
+    const realityList = document.querySelector('.reality-list');
+    if (realityList) {
+      let realityFired = false;
+      const realityObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !realityFired) {
+            realityFired = true;
+            const items = realityList.querySelectorAll('.reality-item');
+            items.forEach((item, i) => {
+              setTimeout(() => {
+                item.classList.add('reality-item--active');
+              }, 600 + i * 500);
+            });
+          }
+        });
+      }, { threshold: 0.15 });
+      realityObserver.observe(realityList);
+    }
+
+    /* FAQ accordion */
     document.querySelectorAll('.faq-q').forEach(btn => {
       btn.addEventListener('click', () => {
-        const item    = btn.closest('.faq-item');
-        const isOpen  = item.classList.contains('open');
-        const icon    = btn.querySelector('.faq-icon');
-
-        // Close all
+        const item = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        const icon = btn.querySelector('.faq-icon');
         document.querySelectorAll('.faq-item.open').forEach(openItem => {
           openItem.classList.remove('open');
           openItem.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
           openItem.querySelector('.faq-icon').textContent = '+';
         });
-
-        // Open clicked (unless it was already open)
         if (!isOpen) {
           item.classList.add('open');
           btn.setAttribute('aria-expanded', 'true');
-          icon.textContent = '+'; // becomes rotated via CSS
+          icon.textContent = '+';
         }
       });
     });
   </script>
-
 </body>
 </html>
